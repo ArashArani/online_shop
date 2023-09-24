@@ -19,7 +19,7 @@
         <td>{{ p.description }}</td>
         <td>{{ p.price }}</td>
         <td>{{ "Yes" if  p.active == 1 else "No" }}</td>
-    <td><a href="/admin/dashboard/edit-products/{{ p.id}}">ویرایش</a></td>
+    <td><a href="/admin/dashboard/edit-product/{{ p.id}}">ویرایش</a></td>
     </tr>
     {% endfor %}
     </table>
