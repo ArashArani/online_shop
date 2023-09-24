@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block header %}
+    <title>Admin Products  </title>
+{% endblock %}
+
+{% block body %}
+
+    <table>
+    <tr>
+        <th>اسم</th>
+        <th>توضیحات</th>
+        <th>قیمت</th>
+        <th>فعال</th>
+        <th>ویرایش</th>
+    </tr>
+    {% for p in products %}
+        <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.price }}</td>
+        <td>{{ "Yes" if  p.active == 1 else "No" }}</td>
+    <td><a href="/admin/dashboard/edit-products/{{ p.id}}">ویرایش</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+
+
+
+    <form action="#" method="post" >
+    <input type="text" name="name" placeholder="نام محصول "><br>
+    <textarea name="description" placeholder=" توضیحات " ></textarea><br>
+    <input type="number" name="price" placeholder="قیمت محصول "><br>
+    <label>فعال:</label><input type="checkbox" value="1" name="active" ><br>
+    <input type="submit">
+
+    </form>
+{% endblock %}

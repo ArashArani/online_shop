@@ -20,4 +20,4 @@ extentions.db.init_app(app)
 with app.app_context():
     extentions.db.create_all()
 
-app.run()
+app.run(debug=True)
