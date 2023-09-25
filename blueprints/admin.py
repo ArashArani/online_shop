@@ -1,4 +1,4 @@
-from flask import Blueprint , render_template , request , session , redirect , abort , url_for
+from flask import Blueprint , render_template , request , session , redirect , abort , url_for  
 import config
 from models.model_product import Product
 from extentions import db
@@ -42,6 +42,7 @@ def products():
         description = request.form.get("description",None)
         price = request.form.get("price",None)
         active = request.form.get("active",None)
+        file = request.files.get('cover',None)
 
         p = Product(name = name , description = description , price = price)
         if active == None :
@@ -52,6 +53,8 @@ def products():
         db.session.add(p)
         db.session.commit()
 
+
+        file.save(f'static/covers/{p.id}.jpg')
         return "Done"
 
 
@@ -67,7 +70,7 @@ def edit_product(id):
         description = request.form.get("description",None)
         price = request.form.get("price",None)
         active = request.form.get("active",None)
-
+        file = request.files.get('cover', None)
         product.name = name
         product.description = description
         product.price = price
@@ -75,7 +78,9 @@ def edit_product(id):
             product.active = 0
         else :
             product.active = 1
-
+        
+        
+        if file != None :
+            file.save(f'static/covers/{product.id}.jpg')
         db.session.commit()
-
         return redirect(url_for('admin.edit_product' , id = id))
