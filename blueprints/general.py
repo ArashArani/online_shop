@@ -1,12 +1,13 @@
 from flask import Blueprint , render_template
-from models.model_product import Product
+from models.model_product import *
+
 app = Blueprint("general",__name__)
 
 
 @app.route('/')
 def main():
     products = Product.query.filter(Product.active == 1).all()
-    return render_template('/main.html' , products = products)
+    return render_template('main.html' , products = products)
 
 @app.route('/product/<int:id>/<name>')
 def product(id,name):
