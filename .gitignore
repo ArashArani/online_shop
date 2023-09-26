@@ -1,1 +1,4 @@
-/vr
+vr/
+__pycache__/
+static/covers/
+instance/
