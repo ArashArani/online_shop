@@ -1,11 +1,12 @@
 from sqlalchemy import *
+from sqlalchemy.orm import backref
 from extentions import db
 
 class Cart(db.Model):
-    __tabalebame__="carts"
+    __tablename__="carts"
     id = Column(Integer , primary_key= True)
-    product_id = Column(INTEGER , ForeignKey('products.id'), nullable=False)
-    cart_id = Column(INTEGER , ForeignKey('carts.id'), nullable=False)
-    quantity = Column(INTEGER)
-    prodct = db.relationship("Product" , backref="cart_items")
-    cart = db.relationship("Cart" , backref="cart_items")
+    user_id = Column(Integer,ForeignKey('users.id'),nullable=False)
+    status = Column(String,default="pending")
+    user = db.relationship('User',backref=backref('carts', lazy ='dynamic'))
+
+
