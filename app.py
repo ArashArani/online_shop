@@ -6,7 +6,7 @@ import config
 import extentions
 from flask_wtf.csrf import CSRFProtect
 from flask_login import LoginManager
-from models.model_users import User
+from models.model_user import User
 
 
 app = Flask(__name__)

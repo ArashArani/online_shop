@@ -1,6 +1,6 @@
 from flask import Blueprint , render_template , request , redirect , session , url_for , flash
 from flask_login import login_user
-from models.model_users import User
+from models.model_user import User
 from passlib.hash import sha256_crypt
 from extentions import db
 
