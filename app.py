@@ -1,4 +1,4 @@
-from flask import Flask , Blueprint
+from flask import Flask , redirect , url_for , flash
 from blueprints.general import app as general
 from blueprints.user import app as user
 from blueprints.admin import app as admin
@@ -30,6 +30,10 @@ login_manager.init_app(app)
 def load_user(user_id):
     return User.query.filter(User.id == user_id).first()
 
+@login_manager.unauthorized_handler
+def unauthorized ():
+    flash (' وارد حساب کاربری خود شوید ')
+    return redirect(url_for('user.login'))
 
 
 
