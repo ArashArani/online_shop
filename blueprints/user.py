@@ -1,4 +1,4 @@
-from flask import Blueprint , render_template , request , redirect , session
+from flask import Blueprint , render_template , request , redirect , session , url_for , flash
 from flask_login import login_user
 from models.model_users import User
 from passlib.hash import sha256_crypt
@@ -19,10 +19,27 @@ def login():
         address = request.form.get('address', None)
 
         if register != None :
+            user = User.query.filter(User.username == username ).first()
+            if user != None:
+                flash(' نام کاربری دیگری انتخاب کنید ')
+                return redirect(url_for('user.login'))
             user = User(username = username , password = sha256_crypt.encrypt(password),phone=phone,address=address)
 
             db.session.add(user)
             db.session.commit()
             login_user(user)
+        
+        else:
+            user = User.query.filter(User.username == username ).first()
+            if user == None:
+                flash(' نام کاربری یا رمز اشتباه است ')
+                return redirect(url_for('user.login'))
+            if sha256_crypt.verify( password , user.password  ):
+                login_user(user)
+                return redirect('/user/dashboard')
+            else :
+                flash(' نام کاربری یا رمز اشتباه است ')
+                return redirect(url_for('user.login'))
 
-            return redirect('/user/dashboard')
+
+        return redirect('/user/dashboard')
