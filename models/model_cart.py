@@ -16,4 +16,12 @@ class Cart(db.Model):
             total += t
         return total
 
-
+    def get_status_persian(self):
+        if self.status == 'pending':
+            return ' در انتظار پرداخت '
+        elif self.status == 'paid':
+            return " پرداخت شده "
+        elif self.status == 'sent':
+            return ' ارسال شده '
+        elif self.status == 'rejected':
+            return ' رد شده '
