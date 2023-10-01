@@ -10,20 +10,22 @@
             <div> 
                 <a href="#" >صفحه اصلی</a>
                 <a href="#" >محصولات جدید</a>
-                
                 <a href="#" >محصولات پرفروش</a>
                 <a href="#" >درباره ما</a>
             </div> 
         </section>
     </header>
-
-
-
-
-
-
-
-    {% for p in products %}
-        <a href="{{ url_for('general.product' , id=p.id , name=p.name) }}">{{ p.name }}</a>
-    {% endfor %}
+<section class="products">
+        {% for p in products %}
+            <section class="product-box">
+                <img src="{{url_for('static',filename='covers/'+p.id|string+ '.jpg')}}">
+                <h3>{{p.name}}</h3>
+                <p>{{p.description|truncate(30)}}</p>
+                <a href="{{ url_for('general.product' , id=p.id , name=p.name) }}"> توضیحات بیشتر ...</a>
+                <div>
+                    <a href="/add-to-cart?id={{p.id}}"> افزودن به سبد خرید </a>
+                </div>
+            </section>
+        {% endfor %}
+</section>
 {% endblock %}

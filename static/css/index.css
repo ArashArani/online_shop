@@ -71,6 +71,12 @@
     font-display: swap;
   }
   
+:root{
+    --font-color :rgba(32, 32, 32, 0.808)
+}
+
+
+
 
 
 body{
@@ -78,7 +84,7 @@ body{
     margin: 0;
     font-size: 15px;
     background: #e0e0e0;
-    color:  #212121 ;
+    color:  var(--font-color) ;
     font-family: Vazirmatn;
 }
 header{
@@ -105,14 +111,12 @@ header > section {
     height: 40px;
     margin: 30px auto auto;
     padding: 8px 20px;
-    border-radius: 72px;
-    background: #e0e0e0;
-    box-shadow:  9px 9px 18px #9d9d9d,
-                 -9px -9px 18px #ffffff;
+    border: 2px solid var(--font-color) ;
+    border-radius: 20px;
 }
 header a {
     font-size: 20px;
-    color: #212121 ;
+    color: var(--font-color) ;
     text-decoration: none;
     font-weight: 900; 
     margin: 0 10px;
@@ -124,3 +128,58 @@ header a:hover{
     text-decoration: underline;    
 }
 
+.product-box{
+    max-width: 250px;
+    margin: 15px;
+    border: 2px solid rgb(26, 26, 26) ;
+    border-radius: 20px;
+
+
+}
+.products{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.product-box > img {
+    width: 100%;
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+}
+.product-box > h3{
+    margin: 5px;
+    font-size: 20px;
+}
+.product-box > a {
+    text-decoration: none;
+    font-size: 12px;
+    color: var(--font-color);
+    background-color: rgba(58, 165, 252, 0.74)  ;   
+    border: 2px solid rgb(21, 95, 255) ;
+    border-radius: 10px;
+    float: right;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    padding: 1px;
+}
+.product-box > div > a {
+    text-decoration: none;
+    font-size:12px;
+    color: var(--font-color);
+    background-color: rgba(71, 252, 71, 0.863)  ;   
+    border: 2px solid  rgba(104, 201, 24);
+    border-radius: 10px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    padding: 1px;
+
+}
+
+.product-box > p {
+    font-size: 15px;
+    margin-right: 10px;
+
+}
