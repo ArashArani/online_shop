@@ -2,30 +2,11 @@
 {% block header %}
     <title> فروشگاه AR TECH</title>
 {% endblock %}
-
 {% block body %}
-    <header>
-        <section>   
-            <img src="{{ url_for ('static' , filename='images/logo.png') }}"  alt="AR TECH" >
-            <div> 
-                <a href="#" >صفحه اصلی</a>
-                <a href="#" >محصولات جدید</a>
-                <a href="#" >محصولات پرفروش</a>
-                <a href="#" >درباره ما</a>
-            </div> 
-        </section>
-    </header>
+{% include 'parts/header.html' %}
 <section class="products">
         {% for p in products %}
-            <section class="product-box">
-                <img src="{{url_for('static',filename='covers/'+p.id|string+ '.jpg')}}">
-                <h3>{{p.name}}</h3>
-                <p>{{p.description|truncate(30)}}</p>
-                <a href="{{ url_for('general.product' , id=p.id , name=p.name) }}"> توضیحات بیشتر ...</a>
-                <div>
-                    <a href="/add-to-cart?id={{p.id}}"> افزودن به سبد خرید </a>
-                </div>
-            </section>
+            {% include 'parts/product.html'  %}
         {% endfor %}
 </section>
 {% endblock %}
