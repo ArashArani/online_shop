@@ -125,66 +125,58 @@ header a:hover{
     text-decoration: underline;    
 }
 .product-box{
-    max-width: 950px;
-    width: 250px;
-    margin: 15px;
+    position: relative;
+    align-items: center;
+    text-decoration: none;
+    max-width: 250px;
+    margin: 10px 10px;
+    height: 100%;
+    padding-bottom: 40px;
     border: 2px solid rgb(26, 26, 26) ;
     border-radius: 20px;
-    align-items: stretch;
-}
-.products{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-top: 20px;
-    max-width: 1000px;
-    flex-wrap: wrap;
-}
-.product-box > img {
-    width: 100%;
-    border-top-right-radius: inherit;
-    border-top-left-radius: inherit;
-}
-.product-box > h3{
-    margin: 10px;
-    font-size: 20px;
-}
-.product-box > a {
-    text-decoration: none;
-    font-size: 12px;
+    font-size: 15px;
     color: var(--font-color);
-    background-color: #A6E3E9  ;   
-    border: 2px solid #71C9CE ;
-    border-radius: 10px;
-    float: right;
-    padding-bottom: 50px;
-    margin-right: 8px;
-    margin-bottom: 10px;
-    padding: 1px;
 }
-.product-box > a:hover{
-    background-color: #E3FDFD  ;   
-    border: 2px solid #71C9CE;
-}
-.product-box > div > a {
-    text-decoration: none;
+.add-to-cart{
+    padding-right: 5px;
+    position: absolute;
+    bottom: 27px;
+    left: 30px;
     font-size:12px;
     color: var(--font-color);
     background-color: #C3EDC0  ;   
     border: 2px solid  #AAC8A7;
     border-radius: 10px;
-    float: left;
-    margin-left: 8px;
-    margin-bottom: 10px;
-    padding: 1px;
-    padding-right: 2px;
+    text-decoration: none;
+
 }
-.product-box > div > a:hover {
+.add-to-cart:hover {
     background-color: #E9FFC2  ;   
     border: 2px solid  #AAC8A7;
 }
-.product-box > p {
+
+.products{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    max-width: 1000px;
+    flex-wrap: wrap;
+}
+.product-box > div.click-to-desc img {
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.product-box > div.click-to-desc h3{
+    margin: 10px;
+    font-size: 20px;
+}
+
+
+.product-box > div.click-to-desc p {
     font-size: 15px;
     margin-right: 10px;
     margin-bottom: 20px;
@@ -199,37 +191,55 @@ header input {
     border: 2px solid var(--font-color);
 }
 a {
+    text-decoration: none;
     font-weight: 500;
     display: flex;
     align-items: center;
 }
 a > img{
+    height: 20px;
     width: 20px;
     margin-right: 7px;
     margin-left: 6px;
 }
-.tag {
-    margin-right: 10px;
+.product-box > div.click-to-desc .tag {
+    margin: 0 5px;
     align-items: center;
     display: inline-flex ;
-    width: 150px;
     font-size: 15px;
-    padding: 3px;
     font-weight: 200;
 }
-.tag img{
+.product-box > div.click-to-desc .tag img{
+    height: 20px;
     width: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 3px;
+    margin-right: 1px;
+}
+section > .tag img{
+    height: 20px;
+    width: 20px;
+    margin-left: 3px;
+    margin-right: 1px;
+}
+section > .tag {
+    margin: 0 5px;
+    align-items: center;
+    display: inline-flex ;
+    font-size: 15px;
+    font-weight: 200;
 }
 .tag.red{
     border : 1px solid #ff9b9b ;
     background-color: #FFD6A5 ;
     border-radius: 20px;
     margin-top: 3px;
+    padding: 3px 10px;
+    margin-left: 4px;
 }
 .tag.yellow{
     border : 1px solid #EFB495;
     background-color:#efd59598;
     border-radius: 20px;
+    width: fit-content;
+    padding: 3px 10px;
 }

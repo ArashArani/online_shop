@@ -4,10 +4,26 @@
 {% endblock %}
 
 {% block body %}
-    <img style="width: 100px" src="/static/covers/{{product.id}}.jpg"><br>
-    {{ product.id }}<br>
-    {{ product.name }}<br>
-    {{  product.description }}<br>
+
+    {% include 'parts/header.html' %}
+
+    <div>
+    <div>
+        <img style="width: 300px ;" src="{{ url_for('static',filename='covers/'+product.id|string +'.jpg') }}">
+    </div>
+    <section>
+        <h1>{{ product.name }}</h1>
+
+
+        <span class="tag yellow"><img src="{{url_for('static' , filename='themes-image/del.png')}}">ارسال رایگان</span>
+        <span class="tag red"><img src="{{url_for('static' , filename='themes-image/done.png')}}">اصالت کالا</span>
+
+
+    </section>
+    </div>
+
+    <br>
+    {{ product.description }}<br>
     {{ product.price }}<br>
 
     <form method="get" action="/add-to-cart">
