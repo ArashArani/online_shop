@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static' ,filename='css/index.css' ) }}">
-    {% block header %}{% endblock %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    {% block header %}
+    {% endblock %}
 </head>
 <body>
-{% block body %}
-    <script>
-        const prices = document.getElementsByClassName('price')
-        for (let i = 0 ; i < prices.length ; i ++){
-            let price = prices[i]
-            price.innerText = parseInt(price.innerText).toLocaleString()
-        }
-    </script>
-{% endblock %}
-</body>
+    {%block body%}
+    {% endblock %}
+<script>
+    const price = document.querySelectorAll('.price');
+    price.innerText = Number(price.innerText).toLocaleString();
+    price.forEach((item) =>{
+        item.innerText = Number(item.innerText).toLocaleString();
+    });
+</script>    
 </body>
 </html>
