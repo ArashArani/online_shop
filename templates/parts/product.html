@@ -5,7 +5,7 @@
                 <img src="{{url_for('static',filename='covers/'+p.id|string+ '.jpg')}}">   
                 <span class="tag yellow"><img src="{{url_for('static' , filename='themes-image/del.png')}}">ارسال رایگان</span>
                 <span class="tag red"><img src="{{url_for('static' , filename='themes-image/done.png')}}">اصالت کالا</span>
-                <h3>{{p.name}}</h3>
+                <h3>{{p.name | truncate(20)}}</h3>
                 <p>{{p.description|truncate(30)}}</p>
                 <span class="price" >{{p.price}}</span>
             </div>
