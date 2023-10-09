@@ -19,7 +19,10 @@ def main():
 def product(id,name):
     product = Product.query.filter(Product.id == id).filter(Product.name == name).filter(
         Product.active == 1).first_or_404()
-    return render_template('/product.html' , product = product)
+    another_products = Product.query.filter(Product.name.like(f'% {product.name[0:5]} %')).limit(3).all()
+    return render_template('/product.html' , product = product ,another_products = another_products)
+
+
 
 @app.route('/about')
 def about():

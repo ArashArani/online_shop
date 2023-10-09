@@ -90,7 +90,7 @@ body{
 header{
     width: 100%;
     text-align: center;
-    margin: 20px;
+    margin: 20px auto;
 }
 header img{
     max-width: 150px;
@@ -105,9 +105,10 @@ header img{
 
  }
 header > section {
+    box-sizing: border-box;
     width: 100%;
     max-width: 800px;
-    height: 40px;
+    height: 60px;
     margin: 30px auto auto;
     padding: 8px 20px;
     border: 2px solid var(--font-color) ;
@@ -174,6 +175,7 @@ header a:hover{
 }
 
 .products{
+    padding-top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -271,7 +273,7 @@ div.product-box  div >span.price{
 div.product-detail-box{
     align-items:stretch;
     display: flex;
-    max-width: 900px;
+    max-width: 1100px;
     justify-content: center;
     align-items: start;
     margin: 30px auto ;
@@ -312,7 +314,7 @@ div.product-detail-box >div.info-box >span.tag{
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 5px 15px 10px 15px;
+    padding: 5px 15px 10px 40px
 }
 div.product-detail-box >div.info-box >span.tag > span.tag-yellow-p img{
     width: 40px;
@@ -380,5 +382,43 @@ div.product-detail-box >div.info-box > h3{
     height: 50px;
 }
 .add-to-cart-dbox:hover{
-    background-color:#0be61ec0 ;
+    background-color:#0ee900 ;
+}
+
+#header-menu-btn{
+    display: none;
+    float: right;
+}
+#header-menu-close-btn{
+    display: none;
+    text-align: right;
+    width: 100%;
+    margin: 15px;
+    font-size: 20px;
+}
+
+@media (max-width : 613px) {
+    header > section > div {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: #ececec;
+        padding: 5px;
+        height: 0;
+        overflow: hidden;
+        z-index: 99;
+    }
+    header > section > div > * {
+        display: block;
+        margin-top: 10px;
+    }
+    #header-menu-btn{
+        display: block;
+    }
+    #header-menu-close-btn{
+        display: inline;
+    }
+    
 }

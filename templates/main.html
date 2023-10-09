@@ -4,9 +4,9 @@
 {% endblock %}
 {% block body %}
 {% include 'parts/header.html' %}
-<section class="products">
+    <section class="products">
         {% for p in products %}
             {% include 'parts/product.html'  %}
         {% endfor %}
-</section>
+    </section>
 {% endblock %}

@@ -17,6 +17,16 @@
     price.forEach((item) =>{
         item.innerText = Number(item.innerText).toLocaleString() + ' تومان ';
     });
+
+    const header_menu = document.getElementById('header-menu')
+    const chenge_header_menu = (show)=>{
+        if (show){
+            header_menu.style.height = header_menu.scrollHeight + "px" 
+        }else{
+            header_menu.style.height = '0' 
+        }
+
+    }
 </script>    
 </body>
 </html>
