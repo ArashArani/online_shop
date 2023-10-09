@@ -8,19 +8,23 @@
     {% include 'parts/header.html' %}
 
     <div class="product-detail-box">
-    <div>
-        <img class="product-detail-box-img" src="{{ url_for('static',filename='covers/'+product.id|string +'.jpg') }}">
-    </div>
-        <section class="product-detail-box">
+        <div class="info-box">
+            <img class="product-detail-box-img" src="{{ url_for('static',filename='covers/'+product.id|string +'.jpg') }}">
             <h1>{{ product.name }}</h1>
-            <span class="tag-yellow-p"><img src="{{url_for('static' , filename='themes-image/del.png')}}"  > ارسال رایگان کالا </span>
-            <span class="tag-yellow-p"><img src="{{url_for('static' , filename='themes-image/done.png')}}" > ضمانت اصالت کالا  </span>
-            <span class="tag-yellow-p"><img src="{{url_for('static' , filename='themes-image/gra.png')}}"  > گارانتی 18 ماه کالا </span>
-            <span class="tag-yellow-p"><img src="{{url_for('static' , filename='themes-image/phone.png')}}"> خدمات پس از فروش کالا </span>
-            <h3>{{ product.description }}</h3>
-            <span class="price" >{{product.price}}</span>
-            <a class="add-to-cart-product-box" href="/add-to-cart?id={{product.id}}"> افزودن به <img src="{{url_for('static' , filename='themes-image/buy.png')}}"></a>
-        </section>
+            <span class="tag">
+                <span class="tag-yellow-p"><img src="{{url_for('static' , filename='themes-image/del.png')}}"  > ارسال رایگان کالا </span>
+                <span class="tag-yellow-p"><img src="{{url_for('static' , filename='themes-image/done.png')}}" > ضمانت اصالت کالا  </span>
+                <span class="tag-yellow-p"><img src="{{url_for('static' , filename='themes-image/gra.png')}}"  > گارانتی 18 ماه کالا </span>
+            </span>
+            <span class="price">
+                {{product.price}}
+            </span>
+            <h3>
+                {{product.description}}
+            </h3>
+            <a class="add-to-cart-dbox" style="opacity: 1;" href="/add-to-cart?id={{product.id}}"> افزودن به <img src="
+                    {{url_for('static' , filename='themes-image/buy.png')}}"> </a>
+            
+        </div>
     </div>
-    </form>
 {% endblock %}

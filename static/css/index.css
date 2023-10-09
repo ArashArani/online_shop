@@ -184,7 +184,7 @@ header a:hover{
     flex-wrap: wrap;
 }
 .product-box section >div > img {
-    height:fit-content ;
+    height:250px;
     width: 100%;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
@@ -258,7 +258,7 @@ div.product-box  div >span.tag {
 }
 
 
-.price{
+div.product-box  div >span.price{
     margin-right: 55px;
     font-size: 16px;
     font-weight: 900;
@@ -269,6 +269,7 @@ div.product-box  div >span.tag {
     background-color: #B3FFAE;
 }
 div.product-detail-box{
+    align-items:stretch;
     display: flex;
     max-width: 900px;
     justify-content: center;
@@ -276,44 +277,108 @@ div.product-detail-box{
     margin: 30px auto ;
     border: 2px solid black;
     border-radius: 20px;
-    max-height: 5000px;
-    height: fit-content;
+    max-height: max-content;
     
 }
 
-section.product-detail-box h1{
-    float: left;
+div.product-detail-box >div.info-box h1{
+    border: #000000 2px solid;
+    border-radius: 48px;
+    padding: 15px;
+    position: relative;
     display: flex;
-    align-items: center;  
-    margin: 20px 40px;
-    font-size: 20;
-    max-width: fit-content;    
+    align-items: center;
+    margin: 45px 0 10px 30px;
+    max-width: fit-content;
+    font-size: 20px;
 
 }
 
-div.product-detail-box div > img.product-detail-box-img{
+div.product-detail-box >div.info-box{
+    max-width: 100%;
+}
+
+div.product-detail-box >div.info-box > img.product-detail-box-img{
+    display: flex;
+    max-width: 240px;
+    height: 250px;
     border: #000000 2px solid;
     border-radius: 20px;
-    margin: 20px 20px;
-
+    margin: 45px 25px 0px 25px;
+    float: right;
 }
-div.product-detail-box section.product-detail-box > span.tag-yellow-p img{
-    display: inline-flex;
+div.product-detail-box >div.info-box >span.tag{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 5px 15px 10px 15px;
+}
+div.product-detail-box >div.info-box >span.tag > span.tag-yellow-p img{
     width: 40px;
     height: auto;
     padding-left: 10px;
 
 }
 
-div.product-detail-box section.product-detail-box > span.tag-yellow-p {
-    border : 2px solid #ff9b9b;
-    background-color:#FFD6A5;
+div.product-detail-box >div.info-box > span.tag>  span.tag-yellow-p {
+    position: relative;
+    display: flex;
+    border: 2px solid #000000;
+    background-color: #ffdbaf;
     border-radius: 200px;
-    display:inline-flex;
     font-size: 20px;
     font-weight: 700;
+    padding: 5px 100px;
+    margin: 15px;
     align-items: center;
-    margin: 10px 20px;
-    padding: 10px 15px;
+    justify-content: center;
+
 }
 
+div.product-detail-box >div.info-box >  span.price  {
+    position: relative;
+    border: #000000 3px solid;
+    display: inline-flex;
+    top: -90px;
+    left: -42px;
+    padding: 15px 15px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 900;
+    background-color: #0ee900;
+}
+div.product-detail-box >div.info-box > h3{
+    text-align: justify;
+    display: inherit;
+    padding: 30px 30px;
+    border: 2px black solid;
+    margin: 10px 50px;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 15px;
+}
+.add-to-cart-dbox{
+    display: flex;
+    position: relative;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    border-radius: 20px;
+    font-size: 35px;
+    float: left;
+    padding: 20px 55px;
+    margin: 25px 50px;
+    border: #000000 3px solid ;
+    color: white;
+    background-color:#00af0f ;
+
+}
+.add-to-cart-dbox img{
+    margin: 0 20px 0 0px;
+    width: 50px;
+    height: 50px;
+}
+.add-to-cart-dbox:hover{
+    background-color:#0be61ec0 ;
+}
