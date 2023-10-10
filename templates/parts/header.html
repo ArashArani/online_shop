@@ -1,13 +1,16 @@
 <header>
-    <section>   
-        <img src="{{ url_for ('static' , filename='images/logo.png') }}"  alt="AR TECH" >
+    <section>
+        <a href="/">
+            <img class="home-img" src="{{ url_for ('static' , filename='images/logo.png') }}"  alt="AR TECH" >
+        </a>   
         <div id="header-menu"> 
             <span id="header-menu-close-btn" onclick="javascript:chenge_header_menu(false)">x</span>
             <form action="/" method="get">
                <input type="search" value="{{ search if search != None }}" name="search" placeholder="جستوجو...">
             </form>
-            <a href="/" >صفحه اصلی</a>
-            <a href="/about" >درباره ما</a>
+            <a class="header-link" href="/cart" >سبد خرید</a>
+            <a class="header-link" href="/user/login">ورود/ثبت نام</a>
+            <a class="header-link" href="/about" >درباره ما</a>
         
         </div> 
         <img src="{{ url_for ('static' , filename='themes-image/menu.png') }}" id="header-menu-btn" onclick="javascript:chenge_header_menu(true)" >

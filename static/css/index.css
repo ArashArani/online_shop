@@ -92,10 +92,13 @@ header{
     text-align: center;
     margin: 20px auto;
 }
-header img{
+header a{
     max-width: 150px;
-    max-height: inherit;
     float: left;
+}
+header a img.home-img{
+    height: 45px;
+    width: 140px;
 }
  header div {
     display: flex;
@@ -114,7 +117,7 @@ header > section {
     border: 2px solid var(--font-color) ;
     border-radius: 20px;
 }
-header a {
+header a.header-link {
     font-size: 20px;
     color: var(--font-color) ;
     text-decoration: none;
@@ -360,6 +363,13 @@ div.product-detail-box >div.info-box > h3{
     font-weight: 400;
     border-radius: 15px;
 }
+div.product-detail-box >div.info-box > h3>article{
+    color: #000000;
+    padding: 5px;
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+}
 .add-to-cart-dbox{
     display: flex;
     position: relative;
@@ -397,7 +407,7 @@ div.product-detail-box >div.info-box > h3{
     font-size: 20px;
 }
 
-@media (max-width : 613px) {
+@media (max-width : 748px) {
     header > section > div {
         display: block;
         position: absolute;
@@ -421,4 +431,84 @@ div.product-detail-box >div.info-box > h3{
         display: inline;
     }
     
+}
+.simple-box{
+    background:#f5f5f5;
+    border: 2px solid black;
+    border-radius: 30px;
+    max-width: 1000px;
+    margin: 20px auto auto ;
+    padding: 15px;
+}
+.simple-box h1{
+    margin: 5px 15px;
+}
+.simple-box > table.cart td.quan{
+    margin: 0px 10px; 
+    display: inline-flex;
+}
+
+.simple-box > table.cart td.quan > a >img.min {
+    color: white;
+    display: flex;
+    background-color: rgb(255, 7, 7);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.simple-box > table.cart td.quan >a >img.plus{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    background-color: #00af0f;
+    border-radius: 50%;
+    color: white;
+}
+
+
+table.cart{
+    margin: auto;
+}
+table.cart td{
+    padding: 5px 15px;
+    border-bottom: 2px black solid ;
+}
+
+a.payment{   
+    margin: 15px 15px 15px;
+    color: white;
+    font-size: 35px;
+    font-weight: 800;
+    justify-content: center;
+    align-items: stretch;
+    background-color: #00af0f;
+    border-radius: 25px;
+    border: #000000 solid 3px;
+    padding: 10px;
+}
+
+a.payment img{
+    width: auto;
+    height: auto;
+    padding: 0 10px;
+}
+
+a.payment:hover {
+    background-color: #07db19c0;
+
+}
+
+section.simple-box > div.price-box > div.price{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 40px 15px 0 15px;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 900;
+    border: #000000 solid 3px;
+    border-radius: 25px;
+    padding: 15px;
+    color: black;
 }

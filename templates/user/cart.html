@@ -4,24 +4,38 @@
 {% endblock %}
 
 {% block body %}
-    {% if cart != None and cart.cart_items|list|length > 0  %}
+
+
+    {% include 'parts/header.html' %}
+
+
+        <section class="simple-box">
+            <h1>سبد خرید</h1>
+            {% if cart != None and cart.cart_items|list|length > 0  %}
+            <table class="cart">
+                <tr>
+                  <th>محصول</th>  
+                  <th>تعداد</th>  
+                  <th>قیمت</th>  
+                </tr>
+                {% for cart_item in cart.cart_items %}
+                    <tr>
+                        <td >{{ cart_item.product.name }}</td>
+                        <td class="quan"><a href="/remove-from-cart?id={{cart_item.id}}" > 
+                        <img class="min" src="{{url_for('static' , filename='themes-image/min.png')}}" >
+                        </a>{{cart_item.quantity}}
+                            <a href="/add-to-cart?id={{cart_item.product.id}}"> <img class="plus" src="{{url_for('static' , filename='themes-image/plus.png')}}"> </a></td>
+                        <td class="price">{{cart_item.product.price}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+                <div class="price-box">
+                    <div class="price" >{{cart.total_price()}}</div>    
+                    <a class="payment" href="/payment"> پرداخت <img src="{{url_for('static' , filename='themes-image/payment.png')}}"></a>
+                </div>
+                {% else %}
+                    سبد خرید خالی است
+                {%endif%}
+        </section>
         
-        {% for cart_item in cart.cart_items %}<br>
-            {{ cart_item.product.name }}<br>{{cart_item.quantity}}<br>{{cart_item.product.price}}<br>
-            <form action="/remove-from-cart">
-                <input type="hidden" name="id" value="{{cart_item.id}}">
-                <input type="submit" value="حذف">
-            </form>
-        {% endfor %}
-        
-
-        <b> قیمت کل : {{ cart.total_price() }} تومان </b>
-
-        <a href="/payment">پرداخت</a>
-
-
-
-    {% else %}
-        سبد خرید خالی است
-    {%endif%}
 {% endblock %}
