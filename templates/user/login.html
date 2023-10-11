@@ -4,26 +4,45 @@
 {% endblock %}
 
 {% block body %}
-    <h1> Login </h1>  
-    <form action="#" method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-        <input type="hidden" name="register" value="1">
-        <input type="text" name="username" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password"><br>
-        <input type="number" name="phone" placeholder="phone"><br>
-        <input type="text" name="address" placeholder="address"><br>
-        <input type="submit">
-    </form>
+    {% include 'parts/header.html' %}
+    <section class="simple-box" style="max-width: 320px ;">
+        <div id="login-box" >
+            <h1>ورود</h1>  
+            <form action="#" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <input type="text" name="username" placeholder="نام کاربری">
+                <input type="password" name="password" placeholder="رمز عبور">
+                <input type="submit" value="ورود" >
+            </form>
+            <span style="cursor: pointer;" onclick="javascript:show_register()">ثبت نام نکرده اید؟</span>
+        </div>  
+        <div id="register-box">
+            <h1>ثبت نام</h1>
+            <form action="#" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <input type="hidden" name="register" value="1">
+                <input type="text" name="username" placeholder="نام کاربری">
+                <input type="password" name="password" placeholder="رمز عبور">
+                <input type="number" name="phone" placeholder="تلفن">
+                <textarea name="address" placeholder="آدرس"></textarea>
+                <input type="submit"  value=" ثبت نام ">
+            </form>
+            <span style="cursor: pointer ;" onclick="javascript:show_login()"> میخواهید وارد شوید ؟ </span>
+         </div>
+    </section>
 
-    <h1> Register </h1>  
-    <form action="#" method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-        <input type="text" name="username" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password"><br>
-        <input type="submit">
-    </form>
+    <script>
+        const register_box = document.getElementById('register-box')
+        const login_box = document.getElementById('login-box')
 
-    {% for m in get_flashed_messages() %}
-        {{m}}
-    {% endfor %}
+
+        const show_register = ()=>{
+            register_box.style.display = 'block'
+            login_box.style.display = 'none'
+        }
+        const show_login = ()=>{
+            register_box.style.display = 'none'
+            login_box.style.display = 'block'
+        }
+    </script>
 {% endblock %}

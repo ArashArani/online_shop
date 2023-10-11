@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/eggy.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/progressbar.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/theme.css')}}" />
     {% block header %}
     {% endblock %}
 </head>
@@ -27,6 +30,18 @@
         }
 
     }
-</script>    
+</script>  
+<script type="module">
+    
+    import { Eggy } from '{{url_for('static',filename='js/eggy.js')}}' ;
+    {% for m in get_flashed_messages() %}
+        await Eggy({
+            title:  ' اطلاعات ',
+            message:  '{{m}}',
+            type: 'info' ,
+            duration: 5000,
+        });        
+        {% endfor %}
+</script>  
 </body>
 </html>
