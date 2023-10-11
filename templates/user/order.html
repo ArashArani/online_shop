@@ -4,12 +4,29 @@
 {% endblock %}
 {% block body %}
 
-    {{ cart.get_status_persian() }}<br>
-    {% for item in cart.cart_items %}
-        {{ item.product.name }}<br>
-        {{ item.product.price }}<br>
-    {%endfor%}
-
-
     
+    {% include 'parts/header.html' %}
+        <section class="simple-box">
+            <h1>سفارش شماره {{cart.id}}  -  {{cart.get_status_persian()}}</h1>
+            <table class="cart">
+                <tr>
+                    <th>شماره محصول</th>  
+                    <th>نام محصول</th>  
+                    <th>تعداد</th>
+                    <th>قیمت</th>
+
+                </tr>
+                {% for item in cart.cart_items %}
+                    <tr>
+                        <td>{{ item.product.id }}</td>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td class="price"> {{ item.price }}</td>
+                    </tr>  
+                {% endfor %}
+                <tr>
+                    <td colspan="4" style="text-align: left" class="price">{{cart.total_price()}}</td>
+                </tr>
+            </table>
+        </section>
 {% endblock %}
