@@ -4,6 +4,8 @@
 {% endblock %}
 {% block body %}
 {% include 'parts/header.html' %}
+
+    <img class="banner" src="{{ url_for('static',filename='images/banner.jpg') }}" >
     <section class="products">
         {% for p in products %}
             {% include 'parts/product.html'  %}
