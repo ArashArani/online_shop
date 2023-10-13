@@ -1,5 +1,5 @@
 from flask import Blueprint , render_template , request , redirect , session , url_for , flash
-from flask_login import login_user , login_required , current_user
+from flask_login import login_user , login_required , current_user ,logout_user
 from models.model_user import User
 from models.model_cart import Cart
 from models.model_product import Product
@@ -75,6 +75,7 @@ def add_to_cart():
     else :
         cart_item.quantity += 1
     db.session.commit()
+    flash(' با موفقیت به سبد خرید اضافه شد')
 
     return redirect(url_for('user.cart'))
 
@@ -90,6 +91,7 @@ def remove_from_cart():
         db.session.delete(cart_item)
 
     db.session.commit()
+    flash(' با موفقیت از سبد خرید حذف شد ')
 
     return redirect(url_for('user.cart'))
 
@@ -104,21 +106,16 @@ def cart():
 @app.route('/payment' , methods=['GET'])
 @login_required
 def payment():
-
     cart = current_user.carts.filter(Cart.status == 'pending').first()
     r = requests.post(config.PAYMENT_FIRST_URL ,data={
         'api': config.PAYMENT_MERCHANT ,'amount' : cart.total_price(),
         'callback' : config.PAYMENT_CALLBACK})
-    
     token = r.json()['result']['token']
     url = r.json()['result']['url']
     pay = Payment( price = cart.total_price(), token = token )
     pay.cart = cart
     db.session.add(pay)
-    
-
     db.session.commit()
-
     return redirect (url)
 
 
@@ -128,12 +125,8 @@ def payment():
 def verify():
     token = request.args.get('token')
     pay = Payment.query.filter(Payment.token == token).first_or_404()
-
-
-
     r = requests.post(config.PAYMENT_VERIFY_URL ,data={
         'api':config.PAYMENT_MERCHANT,'amount' : pay.price ,'token' : token })
-    
     pay_status = bool(r.json()['success'])
     if pay_status :
         transaction_id = r.json()['result']['transaction_id']
@@ -149,15 +142,41 @@ def verify():
         flash('پرداخت موفقیت آمیز نبود ')
         pay.status = 'Failed'
     db.session.commit()
-
     return redirect(url_for('user.dashboard'))
 
 
 
-@app.route('/user/dashboard' , methods=['GET'])
+@app.route('/user/dashboard' , methods=['GET' ,'POST'])
 @login_required
 def dashboard():
-    return render_template('user/dashboard.html')
+    if request.method == 'GET':
+        flash(' با موفقیت وارد شدید ')
+        return render_template('user/dashboard.html')
+    else: 
+        username = request.form.get('username', None)
+        password = request.form.get('password', None)
+        phone = request.form.get('phone', None)
+        address = request.form.get('address', None)
+
+        if current_user.username != username:
+            user = User.query.filter(User.username == username ).first()
+            if user != None:
+                flash(' نام کاربری دیگری انتخاب کنید ')
+                return redirect(url_for('user.dashboard'))
+            else:
+                current_user.username = username
+
+        if password != None:
+            current_user.password = sha256_crypt.encrypt(password)
+
+        current_user.phone = phone
+        current_user.address = address
+        db.session.commit()
+        flash(' تغییرات با موفقیت ثبت شد ')
+        return redirect(url_for('user.dashboard'))
+
+
+
 
 
 @app.route('/user/dahboard/order/<id>' , methods=['GET'])
@@ -165,3 +184,9 @@ def dashboard():
 def order(id):
     cart = current_user.carts.filter(Cart.id == id).first_or_404()
     return render_template('user/order.html',cart = cart )
+@app.route('/user/logout' , methods=['GET'])
+@login_required
+def logout():
+    logout_user()
+    flash(' با موفقیت خارج شدید ')
+    return redirect('/')

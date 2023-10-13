@@ -414,6 +414,7 @@ div.product-detail-box >div.info-box > h3>article{
     max-width: 1000px;
     margin: 20px auto auto ;
     padding: 15px;
+    margin-bottom: 50px;
 }
 .simple-box h1{
     margin: 5px 15px;
@@ -471,7 +472,32 @@ a.payment img{
 
 a.payment:hover {
     background-color: #07db19c0;
+}
 
+a.logout{   
+    max-width: 500px;
+    margin: 50px auto;
+    color: white;
+    font-size: 35px;
+    font-weight: 800;
+    justify-content: center;
+    align-items: stretch;
+    background-color: red;
+    border-radius: 25px;
+    border: #000000 solid 3px;
+    padding: 10px;
+}
+
+a.logout:hover {
+    background-color: rgb(255, 145, 101);
+}
+
+a.logout img{
+    width: auto;
+    height: auto;
+    max-height: 30px;
+    padding: 10px;
+    max-width: 25px;
 }
 
 section.simple-box > div.price-box > div.price{
@@ -556,7 +582,13 @@ section.simple-box > div.price-box > div.price{
 .product-box section:hover{
     box-shadow: 1px 1px 10px 1px #000000;
 }
-
+h2.sim{
+    margin: 30px auto;
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+}
 
 @media (max-width : 748px) {
     header > section > div {

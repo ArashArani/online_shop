@@ -5,22 +5,38 @@
 {% block body %}
     
 {% include 'parts/header.html' %}
-    <section class="simple-box">
+    <section class="simple-box" style="width: 355px ;">
         <h1>سفارشات</h1>
-        <table class="cart">
-            <tr>
-                <th>شماره سفارش</th>  
-                <th>وضعیت</th>  
-                <th>مشاهده</th>
-            </tr>
-            {% for cart in current_user.carts |selectattr('status' , '!=','pending') %}
-            <tr>
-                <td>{{ cart.id }}</td>
-                <td>{{ cart.get_status_persian() }}</td>
-                <td><a href="{{ url_for('user.order', id = cart.id)}}">جزيیات</a></td>
-            </tr>
-                
-            {% endfor %}
+        {% if current_user.carts |list|length > 0 %}
+            <table class="cart">
+                <tr>
+                    <th>شماره سفارش</th>  
+                    <th>وضعیت</th>  
+                    <th>مشاهده</th>
+                </tr>
+                {% for cart in current_user.carts |selectattr('status' , '!=','pending') %}
+                <tr>
+                    <td>{{ cart.id }}</td>
+                    <td>{{ cart.get_status_persian() }}</td>
+                    <td><a href="{{ url_for('user.order', id = cart.id)}}">جزيیات</a></td>
+                </tr>
+                {% endfor %}     
+        {% else %}
+            <i style="display: block ; text-align:center ;font-size:18px; "> سفارشی وجود ندارد </i>
+        {%endif%}
+        
         </table>
     </section>
+    <section class="simple-box" style="width: 355px;">
+        <h1> ویرایش اطلاعات </h1>
+        <form action="#" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="text" name="username" value="{{ current_user.username }}" placeholder="نام کاربری">
+            <input type="password" name="password" placeholder="رمز عبور جدید ">
+            <input type="number" value="{{ current_user.phone }}" name="phone" placeholder="تلفن">
+            <textarea name="address" placeholder="آدرس">{{ current_user.address }}</textarea>
+            <input type="submit"  value=" ثبت تغییرات  ">
+        </form>
+    </section>
+    <a href="/user/logout" class="logout">  خروج از حساب کاربری <img src="{{ url_for('static' , filename='themes-image/logout.png') }}"></a>
 {% endblock %}
