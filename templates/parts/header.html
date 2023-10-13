@@ -5,17 +5,22 @@
         </a>   
         <div id="header-menu"> 
             <span id="header-menu-close-btn" onclick="javascript:chenge_header_menu(false)">x</span>
-            <form action="/" method="get">
-               <input type="search" value="{{ search if search != None }}" name="search" placeholder="جستوجو...">
-            </form>
-            <a class="header-link" href="/cart" >سبد خرید</a>
-            {% if current_user.is_authenticated %}
-            <a class="header-link" href="/user/dashboard">پنل کاربری</a>
+
+            {% if request.endpoint.startswith("admin") %}
+            <a class="header-link" href="/admin/dashboard"> صفحه مدیریت </a>
+            <a class="header-link" href="/admin/dashboard/products"> لیست محصولات </a>
             {% else %}
-            <a class="header-link" href="/user/login">ورود/ثبت نام</a>
-            {%endif%}
-            <a class="header-link" href="/about" >درباره ما</a>
-        
+                <form action="/" method="get">
+                <input type="search" value="{{ search if search != None }}" name="search" placeholder="جستوجو...">
+                </form>
+                <a class="header-link" href="/cart" >سبد خرید</a>
+                {% if current_user.is_authenticated %}
+                <a class="header-link" href="/user/dashboard">پنل کاربری</a>
+                {% else %}
+                <a class="header-link" href="/user/login">ورود/ثبت نام</a>
+                {%endif%}
+                <a class="header-link" href="/about" >درباره ما</a>
+            {% endif %}
         </div> 
         <img src="{{ url_for ('static' , filename='themes-image/menu.png') }}" id="header-menu-btn" onclick="javascript:chenge_header_menu(true)" >
     </section>

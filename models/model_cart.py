@@ -5,7 +5,7 @@ from extentions import db
 class Cart(db.Model):
     __tablename__="carts"
     id = Column(Integer , primary_key= True)
-    status = Column(String,default="pending")
+    status = Column(String, default='pending')
     user_id = Column(Integer,ForeignKey('users.id'),nullable=False)
     user = db.relationship('User',backref=backref('carts', lazy ='dynamic'))
 
@@ -19,7 +19,7 @@ class Cart(db.Model):
     def get_status_persian(self):
         if self.status == 'pending':
             return ' در انتظار پرداخت '
-        elif self.status == 'paid':
+        elif self.status == 'Paid':
             return " پرداخت شده "
         elif self.status == 'sent':
             return ' ارسال شده '

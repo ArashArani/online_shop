@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% block header %}
-    <title>Admin login </title>
+    <title> ورود پنل مدیریت </title>
 {% endblock %}
 
 {% block body %}
-    <h1>Admin Login</h1>  
-    <form action="#" method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-        <input type="text" name="username" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password"><br>
-        <input type="submit">
-
-    </form>
+    <section class="simple-box" style="width: 450px;">
+        <h1>ورود به پنل مدیریت</h1>  
+        <form action="#" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="text" name="username" placeholder="نام کاربری">
+            <input type="password" name="password" placeholder="رمز عبور">
+            <input type="submit" value="ورود" >
+        </form>
+    </section>
 {% endblock %}

@@ -1,15 +1,27 @@
 {% extends 'base.html' %}
 {% block header %}
-    <title>Admin Dashboard </title>
+    <title> پنل مدیریت </title>
 {% endblock %}
 
 {% block body %}
    
-    
-<a href="/admin/dashboard/products"> لیست محصولات </a> <br>
-<div>
-    {% for cart in carts %}
-        {{ cart.user.phone }}  - {{ cart.get_status_persian()}} <a href="{{ url_for('admin.order', id = cart.id )}}" > اطلاعات بیشتر</a><br>
-    {%endfor%}
-</div>
+
+    {% include 'parts/header.html' %}
+    <section class="simple-box" >
+        <h1>سفارشات</h1>
+            <table class="cart">
+                <tr>
+                    <th>شماره سفارش</th>  
+                    <th>وضعیت</th>  
+                    <th>مشاهده</th>
+                </tr>
+                {% for cart in carts %}
+                <tr>
+                    <td>{{ cart.id }}</td>
+                    <td>{{ cart.get_status_persian() }}</td>
+                    <td><a href="{{ url_for('admin.order', id = cart.id)}}">جزيیات</a></td>
+                </tr>
+                {% endfor %}     
+            </table>
+    </section>
 {% endblock %}

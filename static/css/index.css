@@ -96,9 +96,9 @@ header a{
     max-width: 150px;
     float: left;
 }
-header a img.home-img{
+header > section> a> img.home-img{
+    width: 120px;
     height: 45px;
-    width: 140px;
 }
  header div {
     display: flex;
@@ -522,7 +522,7 @@ section.simple-box > div.price-box > div.price{
 #login-box , #register-box {
     text-align: center;
 }
-.simple-box input , textarea{
+.simple-box input , textarea , select{
     color: var(--font-color);
     font-size: 20px;
     font-weight: 600;
@@ -560,13 +560,14 @@ section.simple-box > div.price-box > div.price{
     padding: 15px;
 }
 .banner{
-    margin: 30px auto;
-    display: block;
-    max-width: 800px;
-    width: 100%;
-    height: 300px;
-    border: 5px solid black;
-    border-radius: 35px;
+    display: block ;
+    margin: 20px auto;
+    max-width: 750px;
+    border: 5px solid rgb(0, 225, 255);
+    border-radius: 25px;
+}
+.banner:hover{
+    box-shadow: 1px 1px 20px 1px black;
 }
 
 .eggy title{
@@ -604,14 +605,14 @@ h2.sim{
         z-index: 99;
     }
     header > section > div > * {
-        display: block;
-        margin-top: 10px;
+        display: flex;
+        justify-content: center;
     }
     #header-menu-btn{
         display: block;
     }
     #header-menu-close-btn{
-        display: block;
+        display: flex;
+        justify-content: center;
     }
-    
 }

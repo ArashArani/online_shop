@@ -28,5 +28,23 @@
                     <td colspan="4" style="text-align: left" class="price">{{cart.total_price()}}</td>
                 </tr>
             </table>
+            <table class="cart" style="margin:50px auto  ">
+                <tr>
+                    <th>وضعیت</th>
+                    <th>مبلغ</th>
+                    <th>شماره پیگیری</th>
+                    <th>شماره تراکنش</th>
+                    <th>شماره کارت</th>
+                </tr>
+                {% for pay in cart.payments %}
+                <tr>
+                    <td>{{ pay.get_status_persian() }}</td>
+                    <td class="price" >{{ pay.price }}</td>
+                    <td>{{ pay.refid }}</td>
+                    <td>{{ pay.transaction_id }}</td>
+                    <td>{{ pay.card_pan }}</td>
+                </tr>
+                {%endfor%}
+            </table>
         </section>
 {% endblock %}

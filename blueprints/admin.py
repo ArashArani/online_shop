@@ -1,4 +1,4 @@
-from flask import Blueprint , render_template , request , session , redirect , abort , url_for  
+from flask import Blueprint , render_template , request , session , redirect , abort , url_for   ,flash
 import config
 from models.model_cart import Cart
 from models.model_product import Product
@@ -28,7 +28,10 @@ def main():
 @app.route('/admin/dashboard' , methods = ["GET"])
 def dashboard():
     carts = Cart.query.filter(Cart.status != 'pending').all()
+    flash(' خوش آمدید ')
     return render_template("/admin/dashboard.html" ,carts = carts )
+    
+    
 
 @app.route('/admin/dashboard/order/<id>' , methods = ["GET","POST"])
 def order(id):
@@ -39,6 +42,7 @@ def order(id):
         status = request.form.get('status')
         cart.status = status
         db.session.commit()
+        flash(' وضعیت سفارش با موفقیت تغییر کرد ')
         return redirect(url_for('admin.order', id=id))
 
 
@@ -67,6 +71,7 @@ def products():
 
 
         file.save(f'static/covers/{p.id}.jpg')
+        flash(' محصول جدید با موفقیت اضافه شد ')
         return "Done"
 
 
@@ -94,4 +99,5 @@ def edit_product(id):
         if file.filename != "":
             file.save(f'static/covers/{product.id}.jpg')
         db.session.commit()
+        flash(' وضعیت محصول با موفقیت تغییر کرد ')
         return redirect(url_for('admin.edit_product' , id = id))
