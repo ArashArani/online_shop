@@ -522,7 +522,7 @@ section.simple-box > div.price-box > div.price{
 #login-box , #register-box {
     text-align: center;
 }
-.simple-box input , textarea , select{
+.simple-box input , textarea , select , label{
     color: var(--font-color);
     font-size: 20px;
     font-weight: 600;

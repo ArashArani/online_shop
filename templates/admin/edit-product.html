@@ -4,14 +4,16 @@
 {% endblock %}
 
 {% block body %}
-    <img style="width: 100px" src="/static/covers/{{product.id}}.jpg"> <br>
-    <form action="#" method="post" enctype="multipart/form-data" >
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-        <label>Cover : </label> <input type="file" name="cover"><br>
-        <input type="text" name="name" value="{{ product.name }}" placeholder="نام محصول "><br>
-        <textarea name="description"  placeholder=" توضیحات " >{{ product.description }}</textarea><br>
-        <input type="number" name="price" value="{{ product.price }}" placeholder="قیمت محصول "><br>
-        <label>فعال:</label><input type="checkbox" value="1" name="active" checked {{"checked" if product.active == 1 }} ><br>
-        <input type="submit">
-    </form>
+    {% include 'parts/header.html' %}
+    <section class="simple-box">
+        <form action="#" method="post" enctype="multipart/form-data" >
+            <input type="hidden" name="csrf_token" value="{{ csrf_token()}}"/>
+            <label>Cover : <input type="file" name="cover"><img style="width: 250px ; margin: 20px auto  ; display:block ; border:2px solid black ; border-radius:25px" src="/static/covers/{{product.id}}.jpg"></label> 
+            <input type="text" name="name" value="{{ product.name }}" placeholder="نام محصول " style="display:flex ;">
+            <textarea name="description"  placeholder=" توضیحات " >{{ product.description }}</textarea>
+            <input class="price" type="number" name="price" value="{{ product.price }}" placeholder="قیمت محصول ">
+            <label>فعال:<input type="checkbox" value="1" name="active" checked {{"checked" if product.active == 1 }}></label>
+            <input type="submit" value="ثبت تغییرات">
+        </form>
+    </section>
 {% endblock %}

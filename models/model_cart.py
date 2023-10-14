@@ -21,6 +21,8 @@ class Cart(db.Model):
             return ' در انتظار پرداخت '
         elif self.status == 'Paid':
             return " پرداخت شده "
+        elif self.status == 'paid':
+            return " پرداخت شده "
         elif self.status == 'sent':
             return ' ارسال شده '
         elif self.status == 'rejected':
